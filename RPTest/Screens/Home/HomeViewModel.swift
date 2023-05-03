@@ -7,7 +7,7 @@
 
 import Foundation
 protocol HomeViewModelProtocol: ViewModelProtocol {
-    func getImage(searchText: String, completion: @escaping (Data) -> Void)
+    func getImage(searchText: String, completion: @escaping (Data?) -> Void)
     func createLike(text: String, image: Data)
 }
 
@@ -21,7 +21,7 @@ class HomeViewModel: HomeViewModelProtocol {
         self.coreDataManager = coreDataManager
     }
     
-    func getImage(searchText: String, completion: @escaping (Data) -> Void) {
+    func getImage(searchText: String, completion: @escaping (Data?) -> Void) {
         networkManager.getData(searchText: searchText) { data in
             completion(data)
         }

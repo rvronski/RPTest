@@ -59,16 +59,17 @@ class HomeView: UIView {
    
     
     private func setupView() {
-        self.backgroundColor = .systemGray2
+        self.backgroundColor = .white
         self.addSubview(searchText)
         self.addSubview(searchButton)
         self.addSubview(imageView)
         self.addSubview(activityIndicator)
         self.addSubview(likeButton)
+        searchText.layer.borderWidth = 0.1
         
         NSLayoutConstraint.activate([
         
-            searchText.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            searchText.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             searchText.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             searchText.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             searchText.heightAnchor.constraint(equalTo: searchText.widthAnchor, multiplier: 0.1),

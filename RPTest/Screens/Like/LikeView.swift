@@ -21,6 +21,7 @@ class LikeView: UIView {
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.backgroundColor = .black
         return collectionView
     }()
     
@@ -35,13 +36,13 @@ class LikeView: UIView {
     
     private func setupView() {
         
-        self.backgroundColor = .systemGray2
+        self.backgroundColor = .white
         self.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             
             collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: self.rightAnchor)
             

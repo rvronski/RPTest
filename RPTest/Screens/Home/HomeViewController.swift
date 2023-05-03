@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     
     var viewModel: HomeViewModelProtocol
     
@@ -22,19 +22,30 @@ class HomeViewController: UIViewController {
     }
     
     private lazy var homeView: HomeView = {
-       let view = HomeView()
+        let view = HomeView()
         view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    override func loadView() {
-        super.loadView()
-        self.view = homeView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView() {
+        self.view.backgroundColor = .white
+        self.view.addSubview(homeView)
         
+        NSLayoutConstraint.activate([
+            
+            self.homeView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.homeView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.homeView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            self.homeView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            
+        ])
     }
 }
 extension HomeViewController: HomeViewDelegate {
@@ -49,12 +60,17 @@ extension HomeViewController: HomeViewDelegate {
     
     func getImage(searchText: String) {
         viewModel.getImage(searchText: searchText) { [weak self] data in
+            guard let data else { self?.homeView.activityIndicator.isHidden = true
+                self?.homeView.activityIndicator.stopAnimating()
+                self?.alertOk(title: "Ошибка", message: nil)
+                return
+            }
             DispatchQueue.main.async {
                 self?.homeView.imageView.image = UIImage(data: data)
                 self?.homeView.activityIndicator.isHidden = true
                 self?.homeView.activityIndicator.stopAnimating()
             }
-           
+            
         }
     }
     
