@@ -19,7 +19,16 @@ class LikeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var like = [Like]()
+    private var like = [Like]() {
+        didSet {
+            if self.like.count > 10 {
+                let like = self.like[0]
+                viewModel.deleteLike(like: like)
+                self.like.remove(at: 0)
+                self.likeView.collectionView.reloadData()
+            }
+        }
+    }
     
     private lazy var likeView: LikeView = {
        let view = LikeView()
