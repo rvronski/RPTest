@@ -5,11 +5,12 @@
 //  Created by ROMAN VRONSKY on 03.05.2023.
 //
 
-import Foundation
+
 import CoreData
 
 protocol CoreDataManagerProtocol: AnyObject {
-    
+    func createLike(text: String, image: Data)
+    func getLike() -> [Like]
 }
 
 class CoreDataManager: CoreDataManagerProtocol {
@@ -40,4 +41,21 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
+    func createLike(text: String, image: Data) {
+        let like = Like(context: persistentContainer.viewContext)
+        like.image = image
+        like.text = text
+        saveContext()
+    }
+    
+    func getLike() -> [Like] {
+      let request: NSFetchRequest<Like> = Like.fetchRequest()
+      var fetchedLikes: [Like] = []
+      do {
+          fetchedLikes = try persistentContainer.viewContext.fetch(request)
+      } catch let error {
+         print("Error fetching singers \(error)")
+      }
+      return fetchedLikes
+    }
 }

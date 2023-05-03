@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LikeViewModelProtocol: ViewModelProtocol {
-    
+    func getLike() -> [Like]
 }
 
 class LikeViewModel: LikeViewModelProtocol {
@@ -19,5 +19,9 @@ class LikeViewModel: LikeViewModelProtocol {
     init(networkManager: NetworkProtocol, coreDataManager: CoreDataManagerProtocol) {
         self.networkManager = networkManager
         self.coreDataManager = coreDataManager
+    }
+    
+    func getLike() -> [Like] {
+        coreDataManager.getLike()
     }
 }

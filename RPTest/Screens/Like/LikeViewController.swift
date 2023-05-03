@@ -10,7 +10,6 @@ import UIKit
 class LikeViewController: UIViewController {
     
     var viewModel: LikeViewModelProtocol
-    
     init(viewModel: LikeViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -19,6 +18,8 @@ class LikeViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private var like = [Like]()
     
     private lazy var likeView: LikeView = {
        let view = LikeView()
@@ -32,7 +33,32 @@ class LikeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        likeView.configureCollectionView(collectionViewDelegate: self, collectionViewDataSource: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.like = viewModel.getLike()
+        likeView.collectionView.reloadData()
+    }
+    
+}
+extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        like.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikeCollectionViewCell.identifire, for: indexPath) as! LikeCollectionViewCell
+        cell.setup(model: like[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let itemWidth = (collectionView.frame.width - 32)
+        let itemHeigt = (collectionView.frame.height - 80) / 5
+        return CGSize(width: itemWidth, height: itemHeigt)
     }
     
 }
