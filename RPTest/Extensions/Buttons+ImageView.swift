@@ -31,6 +31,47 @@ class CustomButton: UIButton {
     
 }
 
+
+class LikeButton: UIButton {
+    var tapButton: ( () -> Void )?
+    init() {
+        super.init(frame: .zero )
+        tintColor = .systemRed
+        setImage(UIImage(systemName: "heart"), for: .normal)
+        translatesAutoresizingMaskIntoConstraints = false
+        addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+       
+    }
+    
+    @objc private func didTapButton() {
+        tapButton?()
+    }
+    
+}
+
+class TrashButton: UIButton {
+    var tapButton: ( () -> Void )?
+    init() {
+        super.init(frame: .zero )
+        tintColor = .orange
+        setImage(UIImage(systemName: "trash"), for: .normal)
+        translatesAutoresizingMaskIntoConstraints = false
+        addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+       
+    }
+    
+    @objc private func didTapButton() {
+        tapButton?()
+    }
+}
 class CustomImageView: UIImageView {
     init(imageName: String) {
         super.init(frame: .zero)

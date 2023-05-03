@@ -33,6 +33,9 @@ class searchTextField: UITextField {
         layer.cornerRadius = 15
         autocapitalizationType = .none
         backgroundColor = .white
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
+        leftView = paddingView
+        leftViewMode = .always
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

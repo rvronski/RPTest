@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     
     private lazy var homeView: HomeView = {
        let view = HomeView()
+        view.delegate = self
         return view
     }()
     
@@ -35,7 +36,27 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
     }
-
-
 }
-
+extension HomeViewController: HomeViewDelegate {
+    
+    func saveLike(searchText: String, image: Data) {
+        viewModel.createLike(text: searchText, image: image)
+    }
+    
+    func showAlert() {
+        self.alertOk(title: "Введите запрос", message: nil)
+    }
+    
+    func getImage(searchText: String) {
+        viewModel.getImage(searchText: searchText) { [weak self] data in
+            DispatchQueue.main.async {
+                self?.homeView.imageView.image = UIImage(data: data)
+                self?.homeView.activityIndicator.isHidden = true
+                self?.homeView.activityIndicator.stopAnimating()
+            }
+           
+        }
+    }
+    
+    
+}

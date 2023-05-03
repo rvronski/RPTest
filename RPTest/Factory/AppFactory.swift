@@ -25,7 +25,7 @@ class AppFactory {
             let view = UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
             return Module(moduleType: moduleType, viewModel: viewModel, view: view)
         case .like:
-            let viewModel = LikeViewModel(networkManager: networkManager, coreDataManager: coreDataManager)
+            let viewModel = LikeViewModel(coreDataManager: coreDataManager)
             let view = UINavigationController(rootViewController: LikeViewController(viewModel: viewModel))
             return Module(moduleType: moduleType, viewModel: viewModel, view: view)
        

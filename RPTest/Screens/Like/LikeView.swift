@@ -35,7 +35,7 @@ class LikeView: UIView {
     
     private func setupView() {
         
-        self.backgroundColor = .black
+        self.backgroundColor = .systemGray2
         self.addSubview(collectionView)
         
         NSLayoutConstraint.activate([

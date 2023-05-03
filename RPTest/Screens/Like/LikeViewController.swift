@@ -50,7 +50,8 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikeCollectionViewCell.identifire, for: indexPath) as! LikeCollectionViewCell
-        cell.setup(model: like[indexPath.row])
+        cell.setup(model: like[indexPath.row], likeNumber: indexPath.row)
+        cell.delegate = self
         return cell
     }
     
@@ -60,5 +61,14 @@ extension LikeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let itemHeigt = (collectionView.frame.height - 80) / 5
         return CGSize(width: itemWidth, height: itemHeigt)
     }
+}
+extension LikeViewController: LikeCollectionDelegate {
+    func deleteLike(likeNumber: Int) {
+        let like = like[likeNumber]
+        self.like.remove(at: likeNumber)
+        viewModel.deleteLike(like: like)
+        self.likeView.collectionView.reloadData()
+    }
+    
     
 }

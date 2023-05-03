@@ -6,27 +6,65 @@
 //
 
 import UIKit
-
+protocol HomeViewDelegate: AnyObject {
+    func showAlert()
+    func getImage(searchText: String)
+    func saveLike(searchText: String, image: Data)
+}
 class HomeView: UIView {
 
     private lazy var searchText = searchTextField(placeholderText: "Введите запрос")
     private lazy var searchButton = CustomButton(buttonText: "Сгенерировать", textColor: .white, background: .systemBlue, fontSize: 13, fontWeight: .bold)
-    private lazy var imageView = CustomImageView(imageName: "example")
+    lazy var imageView = CustomImageView(imageName: "example")
+    private lazy var likeButton = LikeButton()
+    var saveSearchText: String? {
+        didSet {
+            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    lazy var activityIndicator: UIActivityIndicatorView = {
+       let activityIndicator = UIActivityIndicatorView(style: .large)
+       activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+       activityIndicator.color = .darkGray
+       return activityIndicator
+   }()
     
+    var delegate: HomeViewDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        searchButton.tapButton = { [weak self] in
+            guard let searchText = self?.searchText.text, !searchText.isEmpty
+            else { self?.delegate?.showAlert()
+                return }
+            self?.saveSearchText = searchText
+            self?.activityIndicator.isHidden = false
+            self?.activityIndicator.startAnimating()
+            self?.delegate?.getImage(searchText: searchText)
+        }
+        
+        likeButton.tapButton = { [weak self] in
+            guard let saveSearchText = self?.saveSearchText, !saveSearchText.isEmpty
+            else { self?.delegate?.showAlert()
+                return }
+            self?.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            self?.delegate?.saveLike(searchText: saveSearchText, image: (self?.imageView.image?.pngData())!)
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+   
+    
     private func setupView() {
-        self.backgroundColor = .black
+        self.backgroundColor = .systemGray2
         self.addSubview(searchText)
         self.addSubview(searchButton)
         self.addSubview(imageView)
+        self.addSubview(activityIndicator)
+        self.addSubview(likeButton)
         
         NSLayoutConstraint.activate([
         
@@ -44,6 +82,12 @@ class HomeView: UIView {
             imageView.leftAnchor.constraint(equalTo: self.leftAnchor),
             imageView.rightAnchor.constraint(equalTo: self.rightAnchor),
             imageView.heightAnchor.constraint(equalTo: searchButton.widthAnchor),
+            
+            likeButton.topAnchor.constraint(equalTo: self.imageView.topAnchor, constant: 20),
+            likeButton.rightAnchor.constraint(equalTo: self.imageView.rightAnchor, constant: -20),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
             
         ])
         

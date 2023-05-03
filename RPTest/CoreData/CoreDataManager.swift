@@ -11,6 +11,7 @@ import CoreData
 protocol CoreDataManagerProtocol: AnyObject {
     func createLike(text: String, image: Data)
     func getLike() -> [Like]
+    func deleteLike(like: Like)
 }
 
 class CoreDataManager: CoreDataManagerProtocol {
@@ -57,5 +58,10 @@ class CoreDataManager: CoreDataManagerProtocol {
          print("Error fetching singers \(error)")
       }
       return fetchedLikes
+    }
+    
+    func deleteLike(like: Like) {
+        persistentContainer.viewContext.delete(like)
+        saveContext()
     }
 }
