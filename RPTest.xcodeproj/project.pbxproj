@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451530A92A02B339003FF32B /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451530A82A02B339003FF32B /* LikeView.swift */; };
+		451530AB2A02B5BC003FF32B /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451530AA2A02B5BC003FF32B /* LikeCollectionViewCell.swift */; };
+		453A5C7D2A02A73D000EFE73 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A5C7C2A02A73D000EFE73 /* UIViewController+Alert.swift */; };
+		453A5C802A02A778000EFE73 /* Buttons+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A5C7F2A02A778000EFE73 /* Buttons+ImageView.swift */; };
+		453A5C822A02A7E7000EFE73 /* Labels+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A5C812A02A7E7000EFE73 /* Labels+TextField.swift */; };
 		45CA21B02A027F7500A4669C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21AF2A027F7500A4669C /* AppDelegate.swift */; };
 		45CA21B22A027F7500A4669C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21B12A027F7500A4669C /* SceneDelegate.swift */; };
 		45CA21B42A027F7500A4669C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21B32A027F7500A4669C /* HomeViewController.swift */; };
@@ -24,9 +29,17 @@
 		45CA21D92A02858500A4669C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21D82A02858500A4669C /* CoreDataManager.swift */; };
 		45CA21DB2A0285DF00A4669C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21DA2A0285DF00A4669C /* NetworkManager.swift */; };
 		45CA21E02A028B3F00A4669C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21DF2A028B3F00A4669C /* HomeView.swift */; };
+		45CA21E22A028E9100A4669C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21E12A028E9100A4669C /* AppCoordinator.swift */; };
+		45CA21E42A028EE400A4669C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21E32A028EE400A4669C /* HomeCoordinator.swift */; };
+		45CA21E62A02912700A4669C /* LikeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CA21E52A02912700A4669C /* LikeCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451530A82A02B339003FF32B /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		451530AA2A02B5BC003FF32B /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
+		453A5C7C2A02A73D000EFE73 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		453A5C7F2A02A778000EFE73 /* Buttons+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+ImageView.swift"; sourceTree = "<group>"; };
+		453A5C812A02A7E7000EFE73 /* Labels+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Labels+TextField.swift"; sourceTree = "<group>"; };
 		45CA21AC2A027F7500A4669C /* RPTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CA21AF2A027F7500A4669C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45CA21B12A027F7500A4669C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +59,9 @@
 		45CA21D82A02858500A4669C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		45CA21DA2A0285DF00A4669C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		45CA21DF2A028B3F00A4669C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		45CA21E12A028E9100A4669C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		45CA21E32A028EE400A4669C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		45CA21E52A02912700A4669C /* LikeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		453A5C7E2A02A746000EFE73 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				453A5C7C2A02A73D000EFE73 /* UIViewController+Alert.swift */,
+				453A5C7F2A02A778000EFE73 /* Buttons+ImageView.swift */,
+				453A5C812A02A7E7000EFE73 /* Labels+TextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		45CA21A32A027F7500A4669C = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +106,7 @@
 			children = (
 				45CA21AF2A027F7500A4669C /* AppDelegate.swift */,
 				45CA21B12A027F7500A4669C /* SceneDelegate.swift */,
+				453A5C7E2A02A746000EFE73 /* Extensions */,
 				45CA21DD2A0289C200A4669C /* Network */,
 				45CA21DC2A0289B000A4669C /* Factory */,
 				45CA21D52A02850100A4669C /* Screens */,
@@ -118,6 +145,7 @@
 				45CA21B32A027F7500A4669C /* HomeViewController.swift */,
 				45CA21DF2A028B3F00A4669C /* HomeView.swift */,
 				45CA21CF2A0284B600A4669C /* HomeViewModel.swift */,
+				45CA21E32A028EE400A4669C /* HomeCoordinator.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -126,7 +154,10 @@
 			isa = PBXGroup;
 			children = (
 				45CA21D12A0284E700A4669C /* LikeViewController.swift */,
+				451530A82A02B339003FF32B /* LikeView.swift */,
+				451530AA2A02B5BC003FF32B /* LikeCollectionViewCell.swift */,
 				45CA21D32A0284F800A4669C /* LikeViewModel.swift */,
+				45CA21E52A02912700A4669C /* LikeCoordinator.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -135,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				45CA21CD2A02843200A4669C /* AppFactory.swift */,
+				45CA21E12A028E9100A4669C /* AppCoordinator.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -227,6 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451530A92A02B339003FF32B /* LikeView.swift in Sources */,
+				451530AB2A02B5BC003FF32B /* LikeCollectionViewCell.swift in Sources */,
 				45CA21B42A027F7500A4669C /* HomeViewController.swift in Sources */,
 				45CA21E02A028B3F00A4669C /* HomeView.swift in Sources */,
 				45CA21D02A0284B600A4669C /* HomeViewModel.swift in Sources */,
@@ -235,10 +269,16 @@
 				45CA21BA2A027F7500A4669C /* RPTest.xcdatamodeld in Sources */,
 				45CA21C72A02826900A4669C /* Coordinatable.swift in Sources */,
 				45CA21B02A027F7500A4669C /* AppDelegate.swift in Sources */,
+				45CA21E62A02912700A4669C /* LikeCoordinator.swift in Sources */,
+				453A5C7D2A02A73D000EFE73 /* UIViewController+Alert.swift in Sources */,
 				45CA21D92A02858500A4669C /* CoreDataManager.swift in Sources */,
 				45CA21CE2A02843200A4669C /* AppFactory.swift in Sources */,
+				453A5C802A02A778000EFE73 /* Buttons+ImageView.swift in Sources */,
 				45CA21B22A027F7500A4669C /* SceneDelegate.swift in Sources */,
 				45CA21C92A02829000A4669C /* Module.swift in Sources */,
+				45CA21E22A028E9100A4669C /* AppCoordinator.swift in Sources */,
+				453A5C822A02A7E7000EFE73 /* Labels+TextField.swift in Sources */,
+				45CA21E42A028EE400A4669C /* HomeCoordinator.swift in Sources */,
 				45CA21CC2A0283B500A4669C /* TabBar.swift in Sources */,
 				45CA21D22A0284E700A4669C /* LikeViewController.swift in Sources */,
 			);

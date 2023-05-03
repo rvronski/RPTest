@@ -13,4 +13,11 @@ protocol LikeViewModelProtocol: ViewModelProtocol {
 
 class LikeViewModel: LikeViewModelProtocol {
     
+    private let coreDataManager: CoreDataManagerProtocol
+    private let networkManager: NetworkProtocol
+    
+    init(networkManager: NetworkProtocol, coreDataManager: CoreDataManagerProtocol) {
+        self.networkManager = networkManager
+        self.coreDataManager = coreDataManager
+    }
 }

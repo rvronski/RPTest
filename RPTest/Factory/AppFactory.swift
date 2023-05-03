@@ -21,12 +21,12 @@ class AppFactory {
     func makeModule(ofType moduleType: Module.ModuleType) -> Module {
         switch moduleType {
         case .home:
-            let viewModel = HomeViewModel(networkManager: networkManager)
+            let viewModel = HomeViewModel(networkManager: networkManager, coreDataManager: coreDataManager)
             let view = UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
             return Module(moduleType: moduleType, viewModel: viewModel, view: view)
         case .like:
-            let viewModel = LikeViewModel()
-            let view = UINavigationController(rootViewController: LikeViewController())
+            let viewModel = LikeViewModel(networkManager: networkManager, coreDataManager: coreDataManager)
+            let view = UINavigationController(rootViewController: LikeViewController(viewModel: viewModel))
             return Module(moduleType: moduleType, viewModel: viewModel, view: view)
        
         }

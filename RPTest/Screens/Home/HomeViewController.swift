@@ -21,9 +21,19 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var homeView: HomeView = {
+       let view = HomeView()
+        return view
+    }()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = homeView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 

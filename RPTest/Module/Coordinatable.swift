@@ -14,6 +14,11 @@ protocol Coordinatable: AnyObject {
     func start() -> UIViewController
 }
 
+protocol ModuleCoordinatable: Coordinatable {
+    var module: Module? { get }
+    var moduleType: Module.ModuleType { get }
+}
+
 extension Coordinatable {
     func addCoordinator(coordinator: Coordinatable) {}
     func removeCoordinator() {}

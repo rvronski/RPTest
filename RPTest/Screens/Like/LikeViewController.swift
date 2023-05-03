@@ -8,22 +8,31 @@
 import UIKit
 
 class LikeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var viewModel: LikeViewModelProtocol
+    
+    init(viewModel: LikeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
+    
+    private lazy var likeView: LikeView = {
+       let view = LikeView()
+        return view
+    }()
 
+    override func loadView() {
+        super.loadView()
+        self.view = likeView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+    }
+    
 }
