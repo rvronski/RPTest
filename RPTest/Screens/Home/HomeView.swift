@@ -66,7 +66,8 @@ class HomeView: UIView {
         self.addSubview(activityIndicator)
         self.addSubview(likeButton)
         searchText.layer.borderWidth = 0.1
-        
+        searchText.accessibilityIdentifier = "SearchTF"
+        searchButton.accessibilityIdentifier = "SearchButton"
         NSLayoutConstraint.activate([
         
             searchText.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),

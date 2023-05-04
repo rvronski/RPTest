@@ -26,9 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
+      </AdditionalOptions>
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -47,6 +52,17 @@
                BlueprintIdentifier = "451DB3EB2A02F7B500DC24BC"
                BuildableName = "RPTestTests.xctest"
                BlueprintName = "RPTestTests"
+               ReferencedContainer = "container:RPTest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "45535A3D2A03D43700BEFC98"
+               BuildableName = "RPTestUITests.xctest"
+               BlueprintName = "RPTestUITests"
                ReferencedContainer = "container:RPTest.xcodeproj">
             </BuildableReference>
          </TestableReference>
