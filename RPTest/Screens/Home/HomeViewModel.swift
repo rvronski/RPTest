@@ -31,3 +31,4 @@ class HomeViewModel: HomeViewModelProtocol {
         coreDataManager.createLike(text: text, image: image)
     }
 }
+
