@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupGesture()
     }
     
     private func setupView() {
@@ -47,8 +48,16 @@ class HomeViewController: UIViewController {
             
         ])
     }
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+    }
 }
+
 extension HomeViewController: HomeViewDelegate {
+   @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
     
     func saveLike(searchText: String, image: Data) {
         viewModel.createLike(text: searchText, image: image)

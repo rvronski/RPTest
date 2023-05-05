@@ -7,6 +7,7 @@
 
 import UIKit
 protocol HomeViewDelegate: AnyObject {
+    func hideKeyboard()
     func showAlert()
     func getImage(searchText: String)
     func saveLike(searchText: String, image: Data)
@@ -34,6 +35,7 @@ class HomeView: UIView {
         super.init(frame: frame)
         setupView()
         searchButton.tapButton = { [weak self] in
+            self?.delegate?.hideKeyboard()
             guard let searchText = self?.searchText.text, !searchText.isEmpty
             else { self?.delegate?.showAlert()
                 return }
